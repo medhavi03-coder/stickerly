@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stickerly Frontend</title>
+</head>
+<body>
+    <h1>Stickerly</h1>
+    <button id="fetchBtn">Get Backend Message</button>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('fetchBtn').onclick = function() {
+            fetch('http://127.0.0.1:5000/api/hello')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('message').textContent = data.message;
+                })
+                .catch(error => {
+                    document.getElementById('message').textContent = 'Error: ' + error;
+                });
+        };
+    </script>
+</body>
+</html>
